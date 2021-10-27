@@ -3,6 +3,7 @@ package com.example.audioapp
 import android.Manifest.permission.*
 import android.content.pm.PackageManager
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.media.MediaPlayer
 import android.media.MediaRecorder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -41,6 +42,14 @@ class MainActivity : AppCompatActivity() {
         stop.setOnClickListener {
             mr.stop()
             start.isEnabled = true
+            stop.isEnabled =false
+        }
+
+        play.setOnClickListener {
+            var mp = MediaPlayer()
+            mp.setDataSource(path)
+            mp.prepare()
+            mp.start()
         }
     }
 
